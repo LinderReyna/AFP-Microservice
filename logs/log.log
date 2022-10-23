@@ -3333,3 +3333,31 @@ Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo can
 22-10-2022 18:24:43.639 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
 22-10-2022 18:24:43.642 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown initiated...
 22-10-2022 18:24:43.649 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown completed.
+22-10-2022 20:35:17.246 [main] INFO  c.n.a.m.AfpMicroserviceApplication.logStarting - Starting AfpMicroserviceApplication using Java 11.0.17 on DESKTOP-NFHEFD4 with PID 14044 (C:\Users\linde\Desktop\NTTData Bootcamp Java\afp-microservice\target\classes started by Linder in C:\Users\linde\Desktop\NTTData Bootcamp Java\afp-microservice)
+22-10-2022 20:35:17.250 [main] INFO  c.n.a.m.AfpMicroserviceApplication.logStartupProfileInfo - No active profile set, falling back to 1 default profile: "default"
+22-10-2022 20:35:18.321 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+22-10-2022 20:35:18.400 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Finished Spring Data repository scanning in 68 ms. Found 1 JPA repository interfaces.
+22-10-2022 20:35:19.053 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer.initialize - Tomcat initialized with port(s): 8080 (http)
+22-10-2022 20:35:19.068 [main] INFO  o.a.catalina.core.StandardService.log - Starting service [Tomcat]
+22-10-2022 20:35:19.068 [main] INFO  o.a.catalina.core.StandardEngine.log - Starting Servlet engine: [Apache Tomcat/9.0.68]
+22-10-2022 20:35:19.290 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/].log - Initializing Spring embedded WebApplicationContext
+22-10-2022 20:35:19.291 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext.prepareWebApplicationContext - Root WebApplicationContext: initialization completed in 1976 ms
+22-10-2022 20:35:19.475 [main] INFO  o.h.jpa.internal.util.LogHelper.logPersistenceUnitInformation - HHH000204: Processing PersistenceUnitInfo [name: default]
+22-10-2022 20:35:19.573 [main] INFO  org.hibernate.Version.logVersion - HHH000412: Hibernate ORM core version 5.6.12.Final
+22-10-2022 20:35:19.777 [main] INFO  o.h.annotations.common.Version.<clinit> - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+22-10-2022 20:35:19.934 [main] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-1 - Starting...
+22-10-2022 20:35:20.147 [main] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-1 - Start completed.
+22-10-2022 20:35:20.201 [main] INFO  org.hibernate.dialect.Dialect.<init> - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+22-10-2022 20:35:21.089 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator.initiateService - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+22-10-2022 20:35:21.103 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+22-10-2022 20:35:21.646 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+22-10-2022 20:35:23.004 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer.start - Tomcat started on port(s): 8080 (http) with context path ''
+22-10-2022 20:35:23.017 [main] INFO  c.n.a.m.AfpMicroserviceApplication.logStarted - Started AfpMicroserviceApplication in 6.361 seconds (JVM running for 7.717)
+22-10-2022 20:35:33.120 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/].log - Initializing Spring DispatcherServlet 'dispatcherServlet'
+22-10-2022 20:35:33.121 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet.initServletBean - Initializing Servlet 'dispatcherServlet'
+22-10-2022 20:35:33.123 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet.initServletBean - Completed initialization in 1 ms
+22-10-2022 20:35:34.488 [http-nio-8080-exec-3] INFO  o.s.api.AbstractOpenApiResource.getOpenApi - Init duration for springdoc-openapi is: 316 ms
+22-10-2022 20:36:06.002 [http-nio-8080-exec-5] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver.logException - Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> com.nttdata.afp.microservice.controller.AfpController.addAfp(com.nttdata.afp.microservice.model.Afp): [Field error in object 'afp' on field 'name': rejected value [null]; codes [NotNull.afp.name,NotNull.name,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [afp.name,name]; arguments []; default message [name]]; default message [no debe ser nulo]] ]
+22-10-2022 20:41:58.534 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+22-10-2022 20:41:58.539 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown initiated...
+22-10-2022 20:41:58.554 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown completed.

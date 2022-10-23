@@ -1,0 +1,222 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: AFP Microservice
+  description: AFP Microservice
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/LINDERREYNAE/AFP-Microservice/1.0.0
+paths:
+  /afp:
+    post:
+      tags:
+        - afp
+      summary: Add a new afp to the database
+      description: Add a new afp to the database
+      operationId: addAfp
+      requestBody:
+        description: Create a new afp in the database
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Afp'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Afp'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Afp'
+        required: true
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "405":
+          description: Invalid input
+    get:
+      tags:
+        - afp
+      summary: All afp
+      description: Multiple status values can be provided with comma separated strings
+      operationId: allAfp
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Afp'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Afp'
+        '400':
+          description: Invalid status value
+  /afp/{id}:
+    put:
+      tags:
+        - afp
+      summary: Update an existing afp
+      description: Update an existing afp by Id
+      operationId: updateAfp
+      parameters:
+        - name: id
+          in: path
+          description: ID of afp to update
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Update an existent afp in the database
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Afp'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Afp'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Afp'
+        required: true
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: afp not found
+        "405":
+          description: Validation exception
+    get:
+      tags:
+        - afp
+      summary: Find afp by ID
+      description: Returns a single afp
+      operationId: getAfpById
+      parameters:
+        - name: id
+          in: path
+          description: ID of afp to return
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Afp'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Afp'
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: afp not found
+    delete:
+      tags:
+        - afp
+      summary: Delete a afp
+      description: delete a afp
+      operationId: deleteAfp
+      parameters:
+        - name: id
+          in: path
+          description: afp id to delete
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+      responses:
+        "400":
+          description: Invalid afp value
+  /afp/name/{name}:
+    get:
+      tags:
+        - afp
+      summary: Find afp by like name
+      description: Find afp by like name
+      operationId: getByNameLike
+      parameters:
+        - name: name
+          in: path
+          description: Name of afp to return
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Afp'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Afp'
+        "400":
+          description: Invalid Name supplied
+        "404":
+          description: afp not found
+        "405":
+          description: Validation exception
+components:
+  schemas:
+    Response:
+      type: object
+      additionalProperties:
+        type: object
+    Afp:
+      required:
+        - name
+        - description
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+          description: Name
+          example: HABITAT
+        description:
+          type: string
+          description: Description
+          example: HABITAT
+      xml:
+        name: Afp
+  requestBodies:
+    Afp:
+      description: afp object that needs to be added to the database
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Afp'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Afp'

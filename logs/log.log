@@ -1,22 +1,22 @@
-23-10-2022 21:34:11.322 [main] INFO  c.n.a.m.AfpMicroserviceApplicationTests.logStarting - Starting AfpMicroserviceApplicationTests using Java 11.0.17 on DESKTOP-NFHEFD4 with PID 12968 (started by Linder in C:\Users\linde\Desktop\NTTData Bootcamp Java\afp-microservice)
-23-10-2022 21:34:11.426 [main] INFO  c.n.a.m.AfpMicroserviceApplicationTests.logStartupProfileInfo - No active profile set, falling back to 1 default profile: "default"
-23-10-2022 21:34:13.304 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-23-10-2022 21:34:13.713 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Finished Spring Data repository scanning in 389 ms. Found 1 JPA repository interfaces.
-23-10-2022 21:34:14.443 [main] INFO  o.s.cloud.context.scope.GenericScope.setSerializationId - BeanFactory id=e4ec46e8-fc2a-3e51-9a66-c7e1ad01e4cd
-23-10-2022 21:34:15.459 [main] INFO  o.h.jpa.internal.util.LogHelper.logPersistenceUnitInformation - HHH000204: Processing PersistenceUnitInfo [name: default]
-23-10-2022 21:34:15.587 [main] INFO  org.hibernate.Version.logVersion - HHH000412: Hibernate ORM core version 5.6.12.Final
-23-10-2022 21:34:15.953 [main] INFO  o.h.annotations.common.Version.<clinit> - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-23-10-2022 21:34:16.412 [main] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-1 - Starting...
-23-10-2022 21:34:16.695 [main] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-1 - Start completed.
-23-10-2022 21:34:16.775 [main] INFO  org.hibernate.dialect.Dialect.<init> - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
-23-10-2022 21:34:17.999 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator.initiateService - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-23-10-2022 21:34:18.015 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
-23-10-2022 21:34:19.477 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-23-10-2022 21:34:22.253 [main] INFO  o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration.restTemplateDiscoveryClientOptionalArgs - Eureka HTTP Client uses RestTemplate.
-23-10-2022 21:34:22.603 [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger.logWarning - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
-23-10-2022 21:34:22.658 [main] INFO  c.n.a.m.AfpMicroserviceApplicationTests.logStarted - Started AfpMicroserviceApplicationTests in 12.118 seconds (JVM running for 14.658)
-23-10-2022 21:34:22.959 [SpringApplicationShutdownHook] INFO  o.s.c.n.eureka.InstanceInfoFactory.create - Setting initial instance status as: STARTING
-23-10-2022 21:34:22.964 [SpringApplicationShutdownHook] INFO  o.s.c.n.e.s.EurekaServiceRegistry.deregister - Unregistering application AFP-MICROSERVICE with eureka with status DOWN
-23-10-2022 21:34:22.969 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
-23-10-2022 21:34:22.973 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown initiated...
-23-10-2022 21:34:22.983 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown completed.
+25-10-2022 23:36:48.315 [main] INFO  c.n.a.m.AfpMicroserviceApplicationTests.logStartupProfileInfo - No active profile set, falling back to 1 default profile: "default"
+25-10-2022 23:36:48.332 [main] INFO  o.s.v.c.e.LeaseAwareVaultPropertySource.logTo - Vault location [secret/application] not resolvable: Not found
+25-10-2022 23:36:49.784 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+25-10-2022 23:36:50.280 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate.registerRepositoriesIn - Finished Spring Data repository scanning in 469 ms. Found 1 JPA repository interfaces.
+25-10-2022 23:36:57.635 [main] INFO  o.s.cloud.context.scope.GenericScope.setSerializationId - BeanFactory id=a129bd96-bae2-37d9-bb32-ff65dd09d4ec
+25-10-2022 23:36:58.415 [main] INFO  o.h.jpa.internal.util.LogHelper.logPersistenceUnitInformation - HHH000204: Processing PersistenceUnitInfo [name: default]
+25-10-2022 23:36:58.559 [main] INFO  org.hibernate.Version.logVersion - HHH000412: Hibernate ORM core version 5.6.12.Final
+25-10-2022 23:36:59.032 [main] INFO  o.h.annotations.common.Version.<clinit> - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+25-10-2022 23:36:59.272 [main] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-1 - Starting...
+25-10-2022 23:36:59.822 [main] INFO  com.zaxxer.hikari.HikariDataSource.getConnection - HikariPool-1 - Start completed.
+25-10-2022 23:36:59.899 [main] INFO  org.hibernate.dialect.Dialect.<init> - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+25-10-2022 23:37:01.366 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator.initiateService - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+25-10-2022 23:37:01.383 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.buildNativeEntityManagerFactory - Initialized JPA EntityManagerFactory for persistence unit 'default'
+25-10-2022 23:37:02.876 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration.openEntityManagerInViewInterceptor - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+25-10-2022 23:37:06.422 [main] INFO  o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration.restTemplateDiscoveryClientOptionalArgs - Eureka HTTP Client uses RestTemplate.
+25-10-2022 23:37:07.011 [main] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger.logWarning - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+25-10-2022 23:37:07.111 [main] INFO  c.n.a.m.AfpMicroserviceApplicationTests.logStarted - Started AfpMicroserviceApplicationTests in 26.805 seconds (JVM running for 29.01)
+25-10-2022 23:37:07.508 [SpringApplicationShutdownHook] INFO  o.s.c.n.eureka.InstanceInfoFactory.create - Setting initial instance status as: STARTING
+25-10-2022 23:37:07.514 [SpringApplicationShutdownHook] INFO  o.s.c.n.e.s.EurekaServiceRegistry.deregister - Unregistering application AFP-MICROSERVICE with eureka with status DOWN
+25-10-2022 23:37:07.526 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean.destroy - Closing JPA EntityManagerFactory for persistence unit 'default'
+25-10-2022 23:37:07.530 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown initiated...
+25-10-2022 23:37:07.546 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource.close - HikariPool-1 - Shutdown completed.

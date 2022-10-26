@@ -1,0 +1,35 @@
+version:  "3.9"
+
+services:
+  afp-microservice:
+    image: "afp-microservice:latest"
+    build:
+      context: .
+    container_name: afp-microservice
+    depends_on:
+      - postgresql
+    environment:
+      - spring.cloud.config.uri=http://config-service:8888
+      - spring.cloud.vault.host=vault-service
+      - spring.cloud.vault.token=00000000-0000-0000-0000-000000000000
+      - spring.datasource.url=jdbc:postgresql://postgresql:5432/afp
+      - server.port=50001
+      - eureka.client.service-url.defaultZone=http://discovery-service:8761/eureka/
+    ports:
+      - "50001:50001"
+    networks:
+      - mired
+  postgresql:
+    image: "postgres:11.12"
+    container_name: postgresql
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456
+      - APP_DB_NAME=afp
+    ports:
+      - "5433:5432"
+    networks:
+      - mired
+networks:
+  mired:
+    external: true

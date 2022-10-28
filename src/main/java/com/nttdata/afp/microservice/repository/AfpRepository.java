@@ -1,6 +1,6 @@
 package com.nttdata.afp.microservice.repository;
 
-import com.nttdata.afp.microservice.domain.Afp;
+import com.nttdata.afp.microservice.entity.Afp;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

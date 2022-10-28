@@ -1,6 +1,6 @@
 package com.nttdata.afp.microservice.service;
 
-import com.nttdata.afp.microservice.domain.Afp;
+import com.nttdata.afp.microservice.entity.Afp;
 import com.nttdata.afp.microservice.repository.AfpRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

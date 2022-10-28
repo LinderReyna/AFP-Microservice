@@ -1,6 +1,6 @@
 package com.nttdata.afp.microservice.service;
 
-import com.nttdata.afp.microservice.domain.Afp;
+import com.nttdata.afp.microservice.entity.Afp;
 
 import java.util.List;
 import java.util.Optional;

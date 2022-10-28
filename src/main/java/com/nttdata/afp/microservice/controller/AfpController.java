@@ -24,7 +24,7 @@ public class AfpController implements AfpApi {
     @Override
     public ResponseEntity<Map<String, Object>> addAfp(Afp afp) {
         Map<String, Object> response = new HashMap<>();
-        response.put("customer", afpMapper.toDto(afpService.save(afpMapper.toDomain(afp))));
+        response.put("customer", afpMapper.toModel(afpService.save(afpMapper.toEntity(afp))));
         response.put("message", "AFP guardado con éxito");
         response.put(TIMESTAMP, new Date());
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
@@ -33,7 +33,7 @@ public class AfpController implements AfpApi {
     @Override
     public ResponseEntity<List<Afp>> allAfp() {
         return ResponseEntity.status(HttpStatus.CREATED).body(
-                afpService.findAll().stream().map(afpMapper::toDto).collect(Collectors.toList())
+                afpService.findAll().stream().map(afpMapper::toModel).collect(Collectors.toList())
         );
     }
 
@@ -49,7 +49,7 @@ public class AfpController implements AfpApi {
     @Override
     public ResponseEntity<Afp> getAfpById(Integer id) {
         return afpService.findById(id)
-                .map(afpMapper::toDto)
+                .map(afpMapper::toModel)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
@@ -57,7 +57,7 @@ public class AfpController implements AfpApi {
     @Override
     public ResponseEntity<List<Afp>> getByNameLike(String name) {
         return afpService.findByNameLike(name)
-                .map(x -> x.stream().map(afpMapper::toDto).collect(Collectors.toList()))
+                .map(x -> x.stream().map(afpMapper::toModel).collect(Collectors.toList()))
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
@@ -67,7 +67,7 @@ public class AfpController implements AfpApi {
         Map<String, Object> response = new HashMap<>();
         return afpService.findById(id)
                 .map(x -> {
-                    response.put("customer", afpService.update(afpMapper.toDomain(afp)));
+                    response.put("customer", afpService.update(afpMapper.toEntity(afp)));
                     response.put("message", "AFP guardado con éxito");
                     response.put(TIMESTAMP, new Date());
                     return ResponseEntity.status(HttpStatus.OK).body(response);

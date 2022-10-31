@@ -1,12 +1,10 @@
 package com.nttdata.afp.microservice.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import javax.persistence.*;
 
-@Getter
-@Setter
+@Data
 @Entity
 public class Afp {
     @Id

@@ -1,0 +1,449 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: AFP Microservice
+  description: AFP Microservice
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/LINDERREYNAE/AFP-Microservice/1.0.0
+paths:
+  /afp:
+    post:
+      tags:
+        - afp
+      summary: Add a new afp to the database
+      description: Add a new afp to the database
+      operationId: addAfp
+      requestBody:
+        description: Create a new afp in the database
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Afp'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Afp'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Afp'
+        required: true
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "405":
+          description: Invalid input
+    get:
+      tags:
+        - afp
+      summary: All afp
+      description: Multiple status values can be provided with comma separated strings
+      operationId: allAfp
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Afp'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Afp'
+        '400':
+          description: Invalid status value
+  /afp/{id}:
+    put:
+      tags:
+        - afp
+      summary: Update an existing afp
+      description: Update an existing afp by Id
+      operationId: updateAfp
+      parameters:
+        - name: id
+          in: path
+          description: ID of afp to update
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Update an existent afp in the database
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Afp'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Afp'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Afp'
+        required: true
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: afp not found
+        "405":
+          description: Validation exception
+    get:
+      tags:
+        - afp
+      summary: Find afp by ID
+      description: Returns a single afp
+      operationId: getAfpById
+      parameters:
+        - name: id
+          in: path
+          description: ID of afp to return
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Afp'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Afp'
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: afp not found
+    delete:
+      tags:
+        - afp
+      summary: Delete a afp
+      description: delete a afp
+      operationId: deleteAfp
+      parameters:
+        - name: id
+          in: path
+          description: afp id to delete
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+      responses:
+        "400":
+          description: Invalid afp value
+  /afp/name/{name}:
+    get:
+      tags:
+        - afp
+      summary: Find afp by like name
+      description: Find afp by like name
+      operationId: getByNameLike
+      parameters:
+        - name: name
+          in: path
+          description: Name of afp to return
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Afp'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Afp'
+        "400":
+          description: Invalid Name supplied
+        "404":
+          description: afp not found
+        "405":
+          description: Validation exception
+  /withdrawal:
+    post:
+      tags:
+        - withdrawal
+      summary: Add a new withdrawal to the database
+      description: Add a new withdrawal to the database
+      operationId: addWithdrawal
+      requestBody:
+        description: Create a new withdrawal in the database
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Withdrawal'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Withdrawal'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Withdrawal'
+        required: true
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "405":
+          description: Invalid input
+  /withdrawal/{id}:
+    put:
+      tags:
+        - withdrawal
+      summary: Update an existing withdrawal
+      description: Update an existing withdrawal by Id
+      operationId: updateWithdrawal
+      parameters:
+        - name: id
+          in: path
+          description: ID of withdrawal to update
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Update an existent withdrawal in the database
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Withdrawal'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Withdrawal'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Withdrawal'
+        required: true
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Response'
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Withdrawal not found
+        "405":
+          description: Validation exception
+    get:
+      tags:
+        - withdrawal
+      summary: Find withdrawal by ID
+      description: Returns a single withdrawal
+      operationId: getWithdrawalById
+      parameters:
+        - name: id
+          in: path
+          description: ID of withdrawal to return
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Withdrawal'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Withdrawal'
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: withdrawal not found
+    delete:
+      tags:
+        - withdrawal
+      summary: Delete a withdrawal
+      description: delete a withdrawal
+      operationId: deleteWithdrawal
+      parameters:
+        - name: id
+          in: path
+          description: withdrawal id to delete
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+      responses:
+        "400":
+          description: Invalid withdrawal value
+  /withdrawal/afp/{id}:
+    get:
+      tags:
+        - withdrawal
+      summary: Find withdrawal by afp ID
+      description: Returns a single withdrawal
+      operationId: getWithdrawalByAfp
+      parameters:
+        - name: id
+          in: path
+          description: withdrawal to return
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Withdrawal'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Withdrawal'
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: withdrawal not found
+  /withdrawal/afp/{id}/all:
+    get:
+      tags:
+        - withdrawal
+      summary: Find withdrawal by afp ID
+      description: Find withdrawals by afp id
+      operationId: getAllWithdrawalByAfp
+      parameters:
+        - name: id
+          in: path
+          description: withdrawal to return
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Withdrawal'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Withdrawal'
+        "400":
+          description: Invalid Name supplied
+        "404":
+          description: afp not found
+        "405":
+          description: Validation exception
+components:
+  schemas:
+    Response:
+      type: object
+      additionalProperties:
+        type: object
+    Afp:
+      required:
+        - name
+        - description
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          description: Name
+          example: HABITAT
+        description:
+          type: string
+          description: Description
+          example: HABITAT
+      xml:
+        name: Afp
+    Withdrawal:
+      required:
+        - afp
+        - withdrawalAmount
+        - amountSent
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          readOnly: true
+        afp:
+          type: integer
+          description: afp ID
+          example: 1
+        withdrawalAmount:
+          type: number
+          format: currency
+          description: withdrawal amount sent by the AFP
+          example: 1000.00
+        status:
+          type: string
+          description: Status [active/inactive]
+          example: active
+          default: active
+        createdAt:
+          type: string
+          format: date-time
+          description: Creation date
+          example: "2022-10-31T23:30:00Z"
+          readOnly: true
+  requestBodies:
+    Afp:
+      description: afp object that needs to be added to the database
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Afp'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Afp'
+    Withdrawal:
+      description: withdrawal object that needs to be added to the database
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Withdrawal'
+        application/xml:
+          schema:
+            $ref: '#/components/schemas/Withdrawal'

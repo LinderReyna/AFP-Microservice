@@ -9,5 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface AfpRepository extends JpaRepository<Afp, Integer> {
-    Optional<List<Afp>> findByNameContains(String name);
+    Optional<List<Afp>> findByNameContainsIgnoreCase(String name);
 }

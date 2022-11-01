@@ -15,21 +15,18 @@ import java.util.*;
 @Slf4j
 @RestController
 public class WithdrawalController implements WithdrawalApi {
-    private static final String TIMESTAMP = "timestamp";
+
     @Autowired
     private WithdrawalService withdrawalService;
 
     @Override
-    public ResponseEntity<Map<String, Object>> addWithdrawal(Withdrawal withdrawal) {
-        Map<String, Object> response = new HashMap<>();
-        response.put("customer", withdrawalService.save(withdrawal));
-        response.put("message", "Retiro AFP guardado con éxito");
-        response.put(TIMESTAMP, new Date());
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    public ResponseEntity<Withdrawal> addWithdrawal(Withdrawal withdrawal) {
+        Withdrawal result = withdrawalService.save(withdrawal);
+        return ResponseEntity.status(HttpStatus.CREATED).body(result);
     }
 
     @Override
-    public ResponseEntity<Void> deleteWithdrawal(Integer id) {
+    public ResponseEntity<Void> deleteWithdrawal(Long id) {
         Optional.ofNullable(withdrawalService.findById(id)).orElseThrow(() -> {
             log.error("Unable to delete non-existent data！");
             return new ResourceNotFoundException();
@@ -51,21 +48,14 @@ public class WithdrawalController implements WithdrawalApi {
     }
 
     @Override
-    public ResponseEntity<Withdrawal> getWithdrawalById(Integer id) {
+    public ResponseEntity<Withdrawal> getWithdrawalById(Long id) {
         Withdrawal withdrawal = withdrawalService.findById(id);
         return ResponseEntity.ok(withdrawal);
     }
 
     @Override
-    public ResponseEntity<Map<String, Object>> updateWithdrawal(Integer id, Withdrawal withdrawal) {
-        Optional.ofNullable(withdrawalService.findById(id)).orElseThrow(() -> {
-            log.error("Unable to delete non-existent data！");
-            return new ResourceNotFoundException();
-        });
-        Map<String, Object> response = new HashMap<>();
-        response.put("customer", withdrawalService.update(withdrawal));
-        response.put("message", "Retiro AFP guardado con éxito");
-        response.put(TIMESTAMP, new Date());
-        return ResponseEntity.status(HttpStatus.OK).body(response);
+    public ResponseEntity<Withdrawal> updateWithdrawal(Long id, Withdrawal withdrawal) {
+        Withdrawal result = withdrawalService.update(withdrawal, id);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 }

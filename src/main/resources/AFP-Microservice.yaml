@@ -34,10 +34,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Response'
+                $ref: '#/components/schemas/Afp'
             application/xml:
               schema:
-                $ref: '#/components/schemas/Response'
+                $ref: '#/components/schemas/Afp'
         "405":
           description: Invalid input
     get:
@@ -76,6 +76,7 @@ paths:
           required: true
           schema:
             type: integer
+
       requestBody:
         description: Update an existent afp in the database
         content:
@@ -95,10 +96,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Response'
+                $ref: '#/components/schemas/Afp'
             application/xml:
               schema:
-                $ref: '#/components/schemas/Response'
+                $ref: '#/components/schemas/Afp'
         "400":
           description: Invalid ID supplied
         "404":
@@ -212,10 +213,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Response'
+                $ref: '#/components/schemas/Withdrawal'
             application/xml:
               schema:
-                $ref: '#/components/schemas/Response'
+                $ref: '#/components/schemas/Withdrawal'
         "405":
           description: Invalid input
   /withdrawal/{id}:
@@ -232,6 +233,7 @@ paths:
           required: true
           schema:
             type: integer
+            format: int64
       requestBody:
         description: Update an existent withdrawal in the database
         content:
@@ -251,10 +253,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Response'
+                $ref: '#/components/schemas/Withdrawal'
             application/xml:
               schema:
-                $ref: '#/components/schemas/Response'
+                $ref: '#/components/schemas/Withdrawal'
         "400":
           description: Invalid ID supplied
         "404":
@@ -276,6 +278,7 @@ paths:
           explode: false
           schema:
             type: integer
+            format: int64
       responses:
         "200":
           description: successful operation
@@ -305,6 +308,7 @@ paths:
           explode: false
           schema:
             type: integer
+            format: int64
       responses:
         "400":
           description: Invalid withdrawal value
@@ -422,6 +426,9 @@ components:
           description: Status [active/inactive]
           example: active
           default: active
+          enum:
+            - active
+            - inactive
         createdAt:
           type: string
           format: date-time

@@ -13,8 +13,9 @@ public class Withdrawal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
-    private Integer afp;
+    @OneToOne
+    @JoinColumn(name="afp", nullable = false)
+    private Afp afp;
     @Column(precision=12, scale=2, nullable = false)
     private BigDecimal withdrawalAmount;
     @Column(nullable = false)

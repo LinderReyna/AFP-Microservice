@@ -42,4 +42,9 @@ public class WithdrawalMapper implements EntityMapper<Withdrawal, com.nttdata.af
     public List<Withdrawal> toModel(List<com.nttdata.afp.microservice.entity.Withdrawal> entityList) {
         return entityList.stream().map(this::toModel).collect(Collectors.toList());
     }
+
+    @Override
+    public TypeMapper getType() {
+        return TypeMapper.WITHDRAWAL;
+    }
 }

@@ -32,4 +32,9 @@ public class AfpMapper implements EntityMapper<Afp, com.nttdata.afp.microservice
     public List<Afp> toModel(List<com.nttdata.afp.microservice.entity.Afp> entityList) {
         return entityList.stream().map(this::toModel).collect(Collectors.toList());
     }
+
+    @Override
+    public TypeMapper getType() {
+        return TypeMapper.AFP;
+    }
 }

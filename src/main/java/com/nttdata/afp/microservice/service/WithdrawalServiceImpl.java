@@ -1,7 +1,6 @@
 package com.nttdata.afp.microservice.service;
 
-import com.nttdata.afp.microservice.mapper.AfpMapper;
-import com.nttdata.afp.microservice.mapper.WithdrawalMapper;
+import com.nttdata.afp.microservice.mapper.FactoryMapper;
 import com.nttdata.afp.microservice.model.Withdrawal;
 import com.nttdata.afp.microservice.repository.WithdrawalRepository;
 import org.springframework.beans.BeanUtils;
@@ -16,15 +15,12 @@ import java.util.Objects;
 @Service
 @Transactional
 public class WithdrawalServiceImpl implements WithdrawalService{
-
-    @Autowired
-    private WithdrawalMapper withdrawalMapper;
     @Autowired
     private WithdrawalRepository withdrawalRepository;
     @Autowired
     private AfpService afpService;
     @Autowired
-    private AfpMapper afpMapper;
+    private FactoryMapper factoryMapper;
 
     /**
      * Desactivar los registros con estado activo antes de guardar
@@ -34,12 +30,12 @@ public class WithdrawalServiceImpl implements WithdrawalService{
         if (Objects.equals(withdrawal.getStatus(), Withdrawal.StatusEnum.ACTIVE)) {
             withdrawalRepository.updateStatus(Withdrawal.StatusEnum.INACTIVE.getValue(), Withdrawal.StatusEnum.ACTIVE.getValue());
         }
-        return withdrawalMapper.toModel(withdrawalRepository.save(withdrawalMapper.toEntity(withdrawal)));
+        return factoryMapper.getWithdrawallMapper().toModel(withdrawalRepository.save(factoryMapper.getWithdrawallMapper().toEntity(withdrawal)));
     }
 
     @Override
     public Withdrawal findById(Long id) {
-        return withdrawalMapper.toModel(withdrawalRepository.findById(id).orElseThrow(ResourceNotFoundException::new));
+        return factoryMapper.getWithdrawallMapper().toModel(withdrawalRepository.findById(id).orElseThrow(ResourceNotFoundException::new));
     }
 
     @Override
@@ -52,22 +48,22 @@ public class WithdrawalServiceImpl implements WithdrawalService{
      */
     @Override
     public Withdrawal findByAfp(Integer id) {
-        return withdrawalMapper.toModel(withdrawalRepository.findByAfpAndStatus(
-                afpMapper.toEntity(afpService.findById(id)),Withdrawal.StatusEnum.ACTIVE.getValue()
+        return factoryMapper.getWithdrawallMapper().toModel(withdrawalRepository.findByAfpAndStatus(
+                factoryMapper.getAfpMapper().toEntity(afpService.findById(id)),Withdrawal.StatusEnum.ACTIVE.getValue()
         ).orElseThrow(ResourceNotFoundException::new));
     }
 
     @Override
     public List<Withdrawal> getByAfp(Integer id) {
-        return withdrawalMapper.toModel(withdrawalRepository.findAllByAfp(afpMapper.toEntity(afpService.findById(id)))
+        return factoryMapper.getWithdrawallMapper().toModel(withdrawalRepository.findAllByAfp(factoryMapper.getAfpMapper().toEntity(afpService.findById(id)))
                 .orElseThrow(ResourceNotFoundException::new));
     }
 
     @Override
     public Withdrawal update(Withdrawal withdrawal, Long id) {
-        com.nttdata.afp.microservice.entity.Withdrawal data = withdrawalMapper.toEntity(findById(id));
-        BeanUtils.copyProperties(withdrawal, data, withdrawalMapper.getNullPropertyNames(withdrawal));
+        com.nttdata.afp.microservice.entity.Withdrawal data = factoryMapper.getWithdrawallMapper().toEntity(findById(id));
+        BeanUtils.copyProperties(withdrawal, data, factoryMapper.getWithdrawallMapper().getNullPropertyNames(withdrawal));
         data.setStatus(withdrawal.getStatus().getValue());
-        return save(withdrawalMapper.toModel(data));
+        return save(factoryMapper.getWithdrawallMapper().toModel(data));
     }
 }

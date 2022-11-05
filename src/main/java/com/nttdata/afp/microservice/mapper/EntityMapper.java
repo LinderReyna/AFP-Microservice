@@ -1,5 +1,6 @@
 package com.nttdata.afp.microservice.mapper;
 
+import com.nttdata.afp.microservice.model.Withdrawal;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 
@@ -25,4 +26,5 @@ public interface EntityMapper<D, E> {
         String[] result = new String[emptyNames.size()];
         return emptyNames.toArray(result);
     }
+    TypeMapper getType();
 }

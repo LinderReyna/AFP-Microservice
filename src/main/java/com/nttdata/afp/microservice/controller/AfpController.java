@@ -28,7 +28,7 @@ public class AfpController implements AfpApi {
     @Override
     public ResponseEntity<List<Afp>> allAfp() {
         List<Afp> result = afpService.findAll();
-        return ResponseEntity.status(HttpStatus.CREATED).body(result);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 
     @Override

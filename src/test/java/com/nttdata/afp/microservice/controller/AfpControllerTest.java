@@ -82,10 +82,10 @@ class AfpControllerTest {
         afp.setName("HABITAT");
         afp.setDescription("HABITAT");
         Mockito.when(afpService.findById(ArgumentMatchers.anyInt())).thenReturn(afp);
-        Mockito.doNothing().when(afpService).deleteById(1);
+        Mockito.doNothing().when(afpService).deleteById(ArgumentMatchers.anyInt());
         mockMvc.perform(MockMvcRequestBuilders.delete(ENDPOINT_URL + "/1")
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isOk());
+                .andExpect(MockMvcResultMatchers.status().isNoContent());
     }
 
     @Test

@@ -38,7 +38,7 @@ public class AfpController implements AfpApi {
             return new ResourceNotFoundException();
         });
         afpService.deleteById(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
     @Override

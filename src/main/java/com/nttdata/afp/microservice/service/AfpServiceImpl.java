@@ -1,16 +1,22 @@
 package com.nttdata.afp.microservice.service;
 
+import com.nttdata.afp.microservice.exception.InvalidDataException;
 import com.nttdata.afp.microservice.mapper.AfpMapper;
 import com.nttdata.afp.microservice.model.Afp;
 import com.nttdata.afp.microservice.repository.AfpRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
+@Transactional
 public class AfpServiceImpl implements AfpService{
 
     @Autowired
@@ -19,8 +25,20 @@ public class AfpServiceImpl implements AfpService{
     AfpRepository afpRepository;
 
     @Override
+
     public Afp save(Afp afp) {
-        return afpMapper.toModel(afpRepository.save(afpMapper.toEntity(afp)));
+        return Optional.of(afp).map(afpMapper::toEntity)
+                .map(x -> {
+                    try {
+                        return afpRepository.save(x);
+                    } catch (DataIntegrityViolationException e){
+                        throw new DuplicateKeyException("Data duplicada");
+                    } catch (Exception e) {
+                        throw new InvalidDataException(e.getMessage());
+                    }
+                })
+                .map(afpMapper::toModel)
+                .orElseThrow(() -> new IllegalArgumentException("Check the data"));
     }
 
     @Override
@@ -35,9 +53,9 @@ public class AfpServiceImpl implements AfpService{
 
     @Override
     public Afp update(Afp afp, Integer id) {
-        com.nttdata.afp.microservice.entity.Afp data = afpMapper.toEntity(findById(id));
+        Afp data = findById(id);
         BeanUtils.copyProperties(afp, data, afpMapper.getNullPropertyNames(afp));
-        return afpMapper.toModel(afpRepository.save(data));
+        return save(data);
     }
 
     @Override

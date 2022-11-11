@@ -1,5 +1,6 @@
 package com.nttdata.afp.microservice.service;
 
+import com.nttdata.afp.microservice.exception.InvalidDataException;
 import com.nttdata.afp.microservice.mapper.AfpMapper;
 import com.nttdata.afp.microservice.mapper.WithdrawalMapper;
 import com.nttdata.afp.microservice.model.Withdrawal;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -34,7 +36,16 @@ public class WithdrawalServiceImpl implements WithdrawalService{
         if (Objects.equals(withdrawal.getStatus(), Withdrawal.StatusEnum.ACTIVE)) {
             withdrawalRepository.updateStatus(Withdrawal.StatusEnum.INACTIVE.getValue(), Withdrawal.StatusEnum.ACTIVE.getValue());
         }
-        return withdrawalMapper.toModel(withdrawalRepository.save(withdrawalMapper.toEntity(withdrawal)));
+        return Optional.of(withdrawal).map(withdrawalMapper::toEntity)
+                .map(x -> {
+                    try {
+                        return withdrawalRepository.save(x);
+                    } catch (Exception e) {
+                        throw new InvalidDataException(e.getMessage());
+                    }
+                })
+                .map(withdrawalMapper::toModel)
+                .orElseThrow(() -> new IllegalArgumentException("Check the data"));
     }
 
     @Override
